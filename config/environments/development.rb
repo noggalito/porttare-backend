@@ -38,4 +38,32 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.action_mailer.delivery_method = :letter_opener
+
+  config.middleware.use Rack::Cors,
+                        debug: true,
+                        logger: (-> { Rails.logger }) do
+    allow do
+      origins "*"
+      resource "*",
+        headers: :any,
+        expose: [
+          "access-token",
+          "expiry",
+          "token-type",
+          "uid",
+          "client"
+        ],
+        methods: [
+          :get,
+          :put,
+          :post,
+          :head,
+          :patch,
+          :delete,
+          :options
+        ]
+    end
+  end
 end
