@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         at: "user",
         controllers: {
           sessions: "api/auth/sessions",
+          registrations: "api/auth/registrations",
           # token_validations: "api/token_validations"
         }
       )

@@ -2,7 +2,6 @@ module Api
   module Auth
     class SessionsController < DeviseTokenAuth::SessionsController
       extend BaseDoc
-      include DeviseTokenAuth::Concerns::SetUserByToken
       include BaseController::JsonRequestsForgeryBypass
 
       resource_description do
@@ -14,7 +13,7 @@ module Api
         api :POST,
             "/auth/user/sign_in",
             "login"
-        description "authenticate using email and password. Response includes user's content preferences"
+        description "authenticate using email and password"
         param :email, String, required: true
         param :password, String, required: true
       end
