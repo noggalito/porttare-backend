@@ -24,6 +24,7 @@ end
 
 gem 'omniauth', '~> 1.3'
 gem 'devise_token_auth', '~> 0.1'
+gem 'omniauth-facebook'
 gem 'rack-cors', '~> 0.4', require: 'rack/cors'
 
 # Use Unicorn as the app server
