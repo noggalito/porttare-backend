@@ -15,7 +15,7 @@ module Api
       end
 
       def content_type
-        request.headers["Content-Type"]
+        request.headers["Content-Type"] || request.headers["Accept"]
       end
     end
   end
