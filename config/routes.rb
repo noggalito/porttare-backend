@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root to: redirect("/apipie")
   apipie
   namespace :api, defaults: { format: :json } do
     namespace :auth do
