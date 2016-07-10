@@ -17,6 +17,7 @@ module Api
         param :auth_origin_url, String, required: true
       end
 
+      # HACK
       # taken from github to make it work
       # https://github.com/lynndylanhurley/devise_token_auth/blob/1d6dbdc2e5ba2de00264362a8a876dc98585bd0c/app/controllers/devise_token_auth/omniauth_callbacks_controller.rb
       # intermediary route for successful omniauth authentication. omniauth does
@@ -33,6 +34,13 @@ module Api
         session['dta.omniauth.params'] = request.env['omniauth.params']
 
         redirect_to redirect_route
+      rescue NoMethodError
+        # TODO handle better
+        # this is likely to happen
+        # on an oauth failure
+        redirect_to(
+          omniauth_failure_path(message: params[:error_message])
+        )
       end
     end
   end
