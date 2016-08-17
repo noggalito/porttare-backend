@@ -15,6 +15,10 @@ module RequestLoginMacros
     get(path, response_headers)
   end
 
+  def put_with_headers(path, parameters = {})
+    put(path, parameters, response_headers)
+  end
+
   private
 
   def response_headers

@@ -37,7 +37,7 @@ module Api
           render nothing: true, status: :created
         else
           @errors = @provider_profile.errors
-          render "api/shared/create_error",
+          render "api/shared/resource_error",
                  status: :unprocessable_entity
         end
       end

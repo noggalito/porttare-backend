@@ -7,6 +7,7 @@ module Api
       end
 
       before_action :authenticate_api_auth_user!
+      before_action :find_provider_item, only: :update
 
       api :GET,
           "/provider/items",
@@ -33,38 +34,63 @@ module Api
         @provider_items = policy_scope(ProviderItem)
       end
 
+      def_param_group :provider_items do
+        param :titulo, String, required: true
+        param :descripcion, String
+        param :precio, Float, required: true
+        param :volumen, String
+        param :peso, String
+        param :imagen, File
+        param :observaciones, String
+        param :unidad_medida,
+              String,
+              "one of the following: #{ProviderItem::UNIDADES_MEDIDA.join(", ")}"
+      end
+
       api :POST,
           "/provider/items",
           "Create a provider item"
-      param :titulo, String, required: true
-      param :descripcion, String
-      param :precio, Float, required: true
-      param :volumen, String
-      param :peso, String
-      param :imagen, File
-      param :observaciones, String
-      param :unidad_medida,
-            String,
-            "one of the following: #{ProviderItem::UNIDADES_MEDIDA.join(", ")}"
+      param_group :provider_items
       def create
-        authorize ProviderItem
-        if create_item?
+        @provider_item =
+          current_api_auth_user
+            .provider_profile
+            .provider_items.new(provider_item_params)
+        authorize @provider_item
+        if @provider_item.save
           render nothing: true, status: :created
         else
           @errors = @provider_item.errors
-          render "api/shared/create_error",
+          render "api/shared/resource_error",
+                 status: :unprocessable_entity
+        end
+      end
+
+      api :PUT,
+          "/provider/items/:id",
+          "Update a provider's item"
+      param :id,
+            Integer,
+            required: true,
+            desc: "Provider item's id"
+      param_group :provider_items
+      def update
+        authorize @provider_item
+        if @provider_item.update_attributes provider_item_params
+          render nothing: true, status: :accepted
+        else
+          @errors = @provider_item.errors
+          render "api/shared/resource_error",
                  status: :unprocessable_entity
         end
       end
 
       private
 
-      def create_item?
-        @provider_item =
-          current_api_auth_user
-            .provider_profile
-            .provider_items.new(provider_item_params)
-        @provider_item.save
+      def find_provider_item
+        @provider_item = policy_scope(
+          ProviderItem
+        ).find(params[:id])
       end
 
       def provider_item_params
