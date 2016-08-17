@@ -5,7 +5,7 @@ module Api
         name "Provider::ClientsController"
         short "provider clients endpoint"
       end
-      
+
       before_action :authenticate_api_auth_user!
 
       api :POST,
@@ -19,24 +19,20 @@ module Api
       param :email, String, required: true
       def create
         authorize ProviderClient
-        if create_item?
+        @provider_client =
+          current_api_auth_user
+            .provider_profile
+            .provider_clients.new(provider_client_params)
+        if @provider_client.save
           render nothing: true, status: :created
         else
           @errors = @provider_client.errors
-          render "api/shared/create_error",
+          render "api/shared/resource_error",
                  status: :unprocessable_entity
         end
       end
 
       private
-
-      def create_item?
-        @provider_client =
-          current_api_auth_user
-            .provider_profile
-            .provider_clients.new(provider_client_params)
-        @provider_client.save
-      end
 
       def provider_client_params
         params.permit(
