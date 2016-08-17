@@ -6,6 +6,8 @@ module Api
         short "apply for a provider profile"
       end
 
+      before_action :authenticate_api_auth_user!
+
       api :POST,
           "/provider/profile",
           "Submit a provider profile application. Response includes the errors if any."

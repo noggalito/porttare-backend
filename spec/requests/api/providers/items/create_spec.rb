@@ -16,7 +16,7 @@ RSpec.describe Api::Provider::ItemsController,
     }
   end
 
-  describe "as provider" do
+  describe "create as provider" do
     let(:provider) { create :user, :provider }
     before { login_as provider }
     let(:attributes) { attributes_for :provider_item }

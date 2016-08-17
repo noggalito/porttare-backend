@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     namespace :provider do
       resource :profile, only: :create
-      resources :items, only: :create
+      resources :items, only: [:index, :create]
       resources :clients, only: :create
     end
 

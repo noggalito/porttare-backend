@@ -20,4 +20,17 @@ module RequestLoginMacros
       )
     )
   end
+
+  def get_with_headers(path)
+    get(
+      path,
+      response.headers.slice(
+        "access-token",
+        "token-type",
+        "client",
+        "expiry",
+        "uid"
+      )
+    )
+  end
 end
