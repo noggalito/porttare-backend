@@ -58,6 +58,11 @@ RSpec.describe Api::Provider::ItemsController,
           provider_item.titulo
         ).to eq(attributes[:titulo])
       }
+
+      it {
+        json = JSON.parse(response.body)
+        expect(json).to have_key("provider_item")
+      }
     end
   end
 end

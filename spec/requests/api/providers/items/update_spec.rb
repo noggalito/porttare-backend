@@ -23,8 +23,14 @@ RSpec.describe Api::Provider::ItemsController,
         )
       }
 
+      let(:json) {
+        JSON.parse response.body
+      }
+
       it {
-        binding.pry
+        expect(
+          json["provider_item"]["titulo"]
+        ).to eq(new_attributes[:titulo])
       }
     end
 
@@ -32,6 +38,14 @@ RSpec.describe Api::Provider::ItemsController,
       let(:other_item) {
         create :provider_item
       }
+
+      it "is out of my scope" do
+        expect {
+          put_with_headers(
+            "/api/provider/items/#{other_item.id}"
+          )
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
   end
 end

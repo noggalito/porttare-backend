@@ -52,13 +52,13 @@ module Api
           "Create a provider item"
       param_group :provider_items
       def create
+        authorize ProviderItem
         @provider_item =
           current_api_auth_user
             .provider_profile
             .provider_items.new(provider_item_params)
-        authorize @provider_item
         if @provider_item.save
-          render nothing: true, status: :created
+          render :item, status: :created
         else
           @errors = @provider_item.errors
           render "api/shared/resource_error",
@@ -77,7 +77,7 @@ module Api
       def update
         authorize @provider_item
         if @provider_item.update_attributes provider_item_params
-          render nothing: true, status: :accepted
+          render :item, status: :accepted
         else
           @errors = @provider_item.errors
           render "api/shared/resource_error",
