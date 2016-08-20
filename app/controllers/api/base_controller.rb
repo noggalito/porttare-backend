@@ -4,6 +4,11 @@ module Api
     include DeviseTokenAuth::Concerns::SetUserByToken
 
     alias_method :pundit_user, :current_api_auth_user
+    
+    # help airbrake identify current user
+    alias_method :current_member, :current_api_auth_user
+    # and expose it to views so it's accessible
+    helper_method :current_member
 
     private
 
