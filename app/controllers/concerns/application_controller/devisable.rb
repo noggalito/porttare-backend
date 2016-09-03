@@ -12,6 +12,20 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    protected
+
+    def after_sign_in_path_for(resource)
+      request.env['omniauth.origin'] || stored_location_for(resource) || path_for(resource)
+    end
+
+    def path_for(resource)
+      if request.referrer == admin_session_url
+        admin_root_path
+      else
+        root_path
+      end
+    end
+
     private
 
     def frontend_url

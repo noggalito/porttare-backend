@@ -27,7 +27,7 @@ end
 CarrierWave.configure do |config|
   host_url = "//" + Rails.application.secrets.host
   if Rails.application.secrets.port.present?
-    host_url += ":" + Rails.application.secrets.port
+    host_url += ":" + Rails.application.secrets.port.to_s
   end
 
   config.asset_host = host_url

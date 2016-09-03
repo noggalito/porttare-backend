@@ -3,6 +3,9 @@ es:
   api:
     something_went_wrong: "Ups, algo salió mal. Por favor vuelve a intentarlo"
   devise:
+    sessions:
+      admin:
+        signed_in: Bienvenido!
     failure:
       already_authenticated: Ya iniciaste sesión
       admin:

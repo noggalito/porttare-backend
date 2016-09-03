@@ -12,6 +12,6 @@ class UserPolicy < ApplicationPolicy
   private
 
   def is_admin?
-    true # TODO
+    user.admin?
   end
 end

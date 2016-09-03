@@ -23,6 +23,7 @@
 #  tokens                 :json
 #  created_at             :datetime
 #  updated_at             :datetime
+#  admin                  :boolean          default(FALSE)
 #
 
 FactoryGirl.define do
@@ -38,6 +39,10 @@ FactoryGirl.define do
       after :create do |user|
         create :provider_profile, user: user
       end
+    end
+
+    trait :admin do
+      admin true
     end
   end
 end
