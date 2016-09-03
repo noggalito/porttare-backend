@@ -2,8 +2,15 @@
 es:
   api:
     something_went_wrong: "Ups, algo salió mal. Por favor vuelve a intentarlo"
+  ui:
+    submit: Enviar
+  admin:
+    users:
+      new: Nuevo usuario
+      created: Usuario creado
   devise:
     sessions:
+      submit: Iniciar sesión
       admin:
         signed_in: Bienvenido!
     failure:
@@ -15,6 +22,16 @@ es:
   pundit:
     not_authorized: No estás autorizado para hacer esto
   activerecord:
+    models:
+      user: Usuario
+    attributes:
+      user:
+        name: Nombre
+        nickname: Sobrenombre
+        email: E-mail
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+        remember_me: Recordarme
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

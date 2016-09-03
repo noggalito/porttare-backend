@@ -38,7 +38,7 @@ Rails.application.routes.draw do
                :passwords
              ]
   namespace :admin do
-    resources :users, only: :index
+    resources :users
     root "users#index"
   end
 end

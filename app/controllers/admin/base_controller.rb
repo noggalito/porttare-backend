@@ -14,6 +14,10 @@ module Admin
 
     protected
 
+    def t(key)
+      I18n.t(key)
+    end
+
     def ensure_is_admin!
       redirect_to(
         root_path,
