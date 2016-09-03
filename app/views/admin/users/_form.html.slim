@@ -1,4 +1,7 @@
 = form_for [:admin, @user] do |f|
+  = render "admin/shared/form_errors",
+           resource: @user
+
   .field
     = f.label :name
     = f.text_field :name

@@ -7,7 +7,9 @@ es:
   admin:
     users:
       new: Nuevo usuario
+      edit: Editar usuario
       created: Usuario creado
+      updated: Usuario actualizado
   devise:
     sessions:
       submit: Iniciar sesión

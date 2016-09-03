@@ -17,13 +17,28 @@ class UserPolicy < ApplicationPolicy
     is_admin?
   end
 
+  def edit?
+    is_admin?
+  end
+
+  def update?
+    is_admin?
+  end
+
   def permitted_attributes
     [
       :name,
       :nickname,
       :image,
       :email,
-      :admin,
+      :admin
+    ]
+  end
+
+  def permitted_attributes_with_password
+    # programatically permit the following so
+    # we don't mistakenly override
+    permitted_attributes + [
       :password,
       :password_confirmation
     ]
