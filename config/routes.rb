@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :locations, only: :create
     resources :products, only: :index
     resources :categories, only: :index do
-      resources :providers, only: :index
+      resources :providers, only: [:index, :show]
     end
 
     namespace :provider do
