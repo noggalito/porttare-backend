@@ -26,6 +26,10 @@ class ProviderItemPolicy < ApplicationPolicy
     is_provider?
   end
 
+  def destroy?
+    is_provider?
+  end
+
   def permitted_attributes
     [
       :titulo,

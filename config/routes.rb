@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :clients,
                 only: [:index, :create, :update]
       resources :items,
-                only: [:index, :create, :update]
+                only: [:index, :create, :update, :destroy]
     end
 
     namespace :auth do

@@ -26,23 +26,38 @@ class ProviderItem < ActiveRecord::Base
 
   enum unidad_medida: UNIDADES_MEDIDA
 
-  validates :titulo,
-            presence: true
-  validates :precio,
-            numericality: { greater_than: 0 }
-  validates :unidad_medida,
-            inclusion: { in: UNIDADES_MEDIDA }
-
-  belongs_to :provider_profile
-  has_many :imagenes,
-           class_name: 'ProviderItemImage'
-
-  accepts_nested_attributes_for(
-    :imagenes,
-    allow_destroy: true,
-    reject_if: proc { |attrs| attrs['imagen'].blank? }
-  )
-
   monetize :precio_cents,
            numericality: false
+
+  begin :scopes
+    default_scope { where(deleted_at: nil) }
+  end
+
+  begin :validations
+    validates :titulo,
+              presence: true
+    validates :precio,
+              numericality: { greater_than: 0 }
+    validates :unidad_medida,
+              inclusion: { in: UNIDADES_MEDIDA }
+  end
+
+  begin :relationships
+    belongs_to :provider_profile
+    has_many :imagenes,
+             class_name: 'ProviderItemImage'
+
+    accepts_nested_attributes_for(
+      :imagenes,
+      allow_destroy: true,
+      reject_if: proc { |attrs| attrs['imagen'].blank? }
+    )
+  end
+
+  begin :methods
+    # performs a soft-delete
+    def destroy
+      update_attribute(:deleted_at, Time.now)
+    end
+  end
 end

@@ -7,7 +7,8 @@ module Api
       end
 
       before_action :authenticate_api_auth_user!
-      before_action :find_provider_item, only: :update
+      before_action :find_provider_item,
+                    only: [:update, :destroy]
 
       api :GET,
           "/provider/items",
@@ -89,6 +90,20 @@ module Api
           render "api/shared/resource_error",
                  status: :unprocessable_entity
         end
+      end
+
+      api :DELETE,
+          "/provider/items/:id",
+          "Delete a provider's item"
+      desc "soft delete is performed (no records are removed from DB)"
+      param :id,
+            Integer,
+            required: true,
+            desc: "Provider item's id"
+      def destroy
+        authorize @provider_item
+        @provider_item.destroy
+        head :no_content
       end
 
       private
