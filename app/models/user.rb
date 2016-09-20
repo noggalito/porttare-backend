@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   include Serializable
 
   has_one :provider_profile
+  has_one :courier_profile
   has_many :locations,
            -> { order(id: :desc) },
            class_name: "UserLocation"
