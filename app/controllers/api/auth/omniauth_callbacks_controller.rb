@@ -17,13 +17,17 @@ module Api
         param :auth_origin_url, String, required: true
       end
 
-      private
+      protected
 
       # HACK
       # taken from github to make it work
       # https://github.com/lynndylanhurley/devise_token_auth/blob/1d6dbdc2e5ba2de00264362a8a876dc98585bd0c/app/controllers/devise_token_auth/omniauth_callbacks_controller.rb
       def resource_class
         User
+      end
+
+      def devise_mapping
+        request.env['devise.mapping']
       end
 
       def auth_hash
