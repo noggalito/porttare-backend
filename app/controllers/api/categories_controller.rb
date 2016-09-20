@@ -25,6 +25,7 @@ module Api
 }}
     def index
       @categories = public_scope.order(:titulo)
+                                .includes(:provider_profiles)
     end
 
     private
