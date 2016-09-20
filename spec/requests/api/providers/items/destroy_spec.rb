@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Api::Provider::ItemsController,
-              type: :request do
+               type: :request do
   let(:provider) { create :user, :provider }
   before { login_as provider }
 

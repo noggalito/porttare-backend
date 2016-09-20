@@ -15,15 +15,19 @@
 #
 
 class ProviderClient < ActiveRecord::Base
-  #relationships
-  belongs_to :provider_profile
+  include SoftDestroyable
 
-  #validations
-  validates :provider_profile_id,
-            :ruc,
-            :nombres,
-            :direccion,
-            :telefono,
-            :email,
-            presence: true
+  begin :relationships
+    belongs_to :provider_profile
+  end
+
+  begin :validations
+    validates :provider_profile_id,
+              :ruc,
+              :nombres,
+              :direccion,
+              :telefono,
+              :email,
+              presence: true
+  end
 end

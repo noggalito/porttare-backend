@@ -18,6 +18,8 @@
 #
 
 class ProviderItem < ActiveRecord::Base
+  include SoftDestroyable
+
   UNIDADES_MEDIDA = [
     "volumen",
     "unidades",
@@ -29,10 +31,6 @@ class ProviderItem < ActiveRecord::Base
 
   monetize :precio_cents,
            numericality: false
-
-  begin :scopes
-    default_scope { where(deleted_at: nil) }
-  end
 
   begin :validations
     validates :titulo,
@@ -54,12 +52,5 @@ class ProviderItem < ActiveRecord::Base
       allow_destroy: true,
       reject_if: proc { |attrs| attrs['imagen'].blank? }
     )
-  end
-
-  begin :methods
-    # performs a soft-delete
-    def soft_destroy
-      update_attribute(:deleted_at, Time.now)
-    end
   end
 end
