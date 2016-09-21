@@ -44,7 +44,7 @@ module Api
       def create
         authorize ProviderProfile
         if apply_as_provider?
-          render nothing: true, status: :created
+          head :created
         else
           @errors = @provider_profile.errors
           render "api/shared/resource_error",
