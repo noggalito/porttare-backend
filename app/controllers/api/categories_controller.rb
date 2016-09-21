@@ -4,9 +4,13 @@ module Api
 
     respond_to :json
 
+    resource_description do
+      short "provider categories"
+    end
+
     api :GET,
         "/categories",
-        "List provider categories including their providers"
+        "List provider categories including a simple list of their providers"
     example %q{{
   "categories":[
     {

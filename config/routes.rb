@@ -17,6 +17,10 @@ Rails.application.routes.draw do
                 only: [:index, :create, :update, :destroy]
     end
 
+    namespace :courier do
+      resource :profile, only: :create
+    end
+
     namespace :auth do
       mount_devise_token_auth_for(
         "User",

@@ -4,9 +4,14 @@ module Api
 
     respond_to :json
 
+    resource_description do
+      short "providers from a category"
+    end
+
     api :GET,
         "/categories/:category_id/providers",
-        "Category information with a list of providers"
+        "List of providers that belong to a category"
+    desc "includes full provider info"
     example %q{{
   "category":{
     "id":2,

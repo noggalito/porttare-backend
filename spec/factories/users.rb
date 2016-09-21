@@ -35,14 +35,20 @@ FactoryGirl.define do
     password              { Faker::Internet.password }
     password_confirmation { password }
 
+    trait :admin do
+      admin true
+    end
+
     trait :provider do
       after :create do |user|
         create :provider_profile, user: user
       end
     end
 
-    trait :admin do
-      admin true
+    trait :courier do
+      after :create do |user|
+        create :courier_profile, user: user
+      end
     end
   end
 end

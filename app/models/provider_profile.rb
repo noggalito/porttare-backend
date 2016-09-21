@@ -59,7 +59,9 @@ class ProviderProfile < ActiveRecord::Base
               :banco_identificacion,
               :nombre_establecimiento,
               presence: true
-    validates :ruc, uniqueness: true
+    validates :ruc,
+              :email,
+              uniqueness: true
     validate :validate_formas_de_pago
   end
 
