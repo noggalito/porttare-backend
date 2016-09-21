@@ -59,6 +59,15 @@ class CourierProfile < ActiveRecord::Base
   end
 
   begin :validations
+    validates :ruc,
+              :nombres,
+              :email,
+              :telefono,
+              presence: true
+    validates :ruc,
+              :email,
+              :telefono,
+              uniqueness: true
     validates :ubicacion,
               inclusion: { in: UBICACIONES }
     validates :tipo_licencia,
