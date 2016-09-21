@@ -48,17 +48,17 @@ class CourierProfile < ActiveRecord::Base
     "Especiales"              # (E1)
   ].freeze
 
-  begin :relationships
+  begin :relationships do
     belongs_to :user
   end
 
-  begin :enumerables
+  begin :enumerables do
     enum ubicacion: UBICACIONES
     enum tipo_licencia: TIPOS_LICENCIA
     enum tipo_medio_movilizacion: TIPOS_MEDIO_MOVILIZACION
   end
 
-  begin :validations
+  begin :validations do
     validates :ruc,
               :nombres,
               :email,
