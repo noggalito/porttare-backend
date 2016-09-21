@@ -6,6 +6,7 @@ module Api
       include BaseController::JsonRequestsForgeryBypass
 
       resource_description do
+        name "Auth::Passwords"
         short "password reset"
         description "password recovery functionality handled by [`devise_token_auth` gem](https://github.com/lynndylanhurley/devise_token_auth)"
       end

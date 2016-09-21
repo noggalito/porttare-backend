@@ -2,8 +2,8 @@ module Api
   module Provider
     class ItemsController < BaseController
       resource_description do
-        name "Provider::ItemsController"
-        short "provider items endpoint"
+        name "Provider::Items"
+        short "provider's items"
       end
 
       before_action :authenticate_api_auth_user!

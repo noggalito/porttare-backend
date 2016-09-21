@@ -2,8 +2,8 @@ module Api
   module Provider
     class ClientsController < BaseController
       resource_description do
-        name "Provider::ClientsController"
-        short "provider clients endpoint"
+        name "Provider::Clients"
+        short "provider's clients"
       end
 
       before_action :authenticate_api_auth_user!

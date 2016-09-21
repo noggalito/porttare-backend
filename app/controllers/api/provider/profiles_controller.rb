@@ -2,7 +2,7 @@ module Api
   module Provider
     class ProfilesController < BaseController
       resource_description do
-        name "Provider::ProfilesController"
+        name "Provider::Profiles"
         short "apply for a provider profile"
       end
 
