@@ -5,18 +5,19 @@ class ProviderProfilePolicy < ApplicationPolicy
   end
 
   def permitted_attributes
+    # non-allowed attributes
+    # tipo_contribuyente
+    # fecha_inicio_actividad
     [
       :ruc,
       :razon_social,
       :actividad_economica,
-      :tipo_contribuyente,
       :representante_legal,
       :telefono,
       :email,
-      :fecha_inicio_actividad,
       :banco_nombre,
       :banco_numero_cuenta,
-      :banco_identificacion,
+      :banco_tipo_cuenta,
       :website,
       :facebook_handle,
       :twitter_handle,
@@ -26,7 +27,8 @@ class ProviderProfilePolicy < ApplicationPolicy
       :nombre_establecimiento,
       formas_de_pago: [],
       offices_attributes: [
-        :direccion
+        :direccion,
+        :horario
       ]
     ]
   end

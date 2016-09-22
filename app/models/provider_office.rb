@@ -16,5 +16,6 @@ class ProviderOffice < ActiveRecord::Base
   belongs_to :provider_profile
 
   validates :direccion,
+            :horario,
             presence: true
 end

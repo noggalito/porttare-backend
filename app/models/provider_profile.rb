@@ -14,7 +14,6 @@
 #  fecha_inicio_actividad :date
 #  banco_nombre           :string
 #  banco_numero_cuenta    :string
-#  banco_identificacion   :string
 #  website                :string
 #  facebook_handle        :string
 #  twitter_handle         :string
@@ -26,6 +25,8 @@
 #  updated_at             :datetime         not null
 #  provider_category_id   :integer
 #  nombre_establecimiento :string           not null
+#  logotipo               :string
+#  banco_tipo_cuenta      :integer
 #
 
 class ProviderProfile < ActiveRecord::Base
@@ -33,6 +34,13 @@ class ProviderProfile < ActiveRecord::Base
     "efectivo",
     "tarjeta_credito"
   ].freeze
+
+  BANCO_TIPOS_CUENTA = [
+    "Ahorros",
+    "Crédito"
+  ].freeze
+
+  enum banco_tipo_cuenta: BANCO_TIPOS_CUENTA
 
   begin :relationships
     belongs_to :user
@@ -52,11 +60,8 @@ class ProviderProfile < ActiveRecord::Base
     validates :ruc,
               :email,
               :telefono,
-              :banco_nombre,
               :razon_social,
-              :actividad_economica,
-              :banco_numero_cuenta,
-              :banco_identificacion,
+              :representante_legal,
               :nombre_establecimiento,
               presence: true
     validates :ruc,

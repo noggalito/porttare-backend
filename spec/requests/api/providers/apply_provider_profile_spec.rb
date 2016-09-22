@@ -62,7 +62,7 @@ RSpec.describe Api::Provider::ProfilesController,
     let(:attributes) {
       attributes_for(:provider_profile).merge(
         offices_attributes: [
-          { direccion: direccion }
+          { direccion: direccion, horario: "09:00-18:00" }
         ]
       )
     }
