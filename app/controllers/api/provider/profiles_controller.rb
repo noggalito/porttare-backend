@@ -45,10 +45,40 @@ module Api
       param :twitter_handle, String
       param :instagram_handle, String
       param :youtube_handle, String
+      example %q{{
+  "provider_profile":{
+    "id":3,
+    "ruc":"5184135690",
+    "razon_social":"Bernal e Hijos",
+    "nombre_establecimiento":"Ballesteros y Sosa",
+    "actividad_economica":"writer",
+    "representante_legal":"Rebeca Regalado Espinal",
+    "telefono":"948075420",
+    "email":"benedict_heel@predovicjacobson.name",
+    "website":"http://mann.net/harmon_hartmann",
+    "formas_de_pago":["tarjeta_credito"],
+    "logotipo_url":null,
+    "facebook_handle":"savannah",
+    "twitter_handle":"noah.beier",
+    "instagram_handle":"keegan.wehner",
+    "youtube_handle":"matteo_bashirian",
+    "banco_nombre":"Principado de Asturias crows",
+    "banco_numero_cuenta":"90-5771199",
+    "banco_tipo_cuenta":"Crédito",
+    "offices":[{
+      "id":1,
+      "direccion":"Extramuros Jorge Yáñez 2",
+      "ciudad":"Ávila",
+      "horario":"09:00-18:00",
+      "enabled":false
+    }]
+  }
+}}
       def create
         authorize ProviderProfile
         if apply_as_provider?
-          head :created
+          render "api/provider/profiles/create",
+                 status: :created
         else
           @errors = @provider_profile.errors
           render "api/shared/resource_error",

@@ -35,6 +35,9 @@ RSpec.describe Api::Provider::ProfilesController,
       provider_profile = ProviderProfile.last
       expect(provider_profile.user).to eq(user)
     }
+    it {
+      expect(response.status).to eq(201)
+    }
   end
 
   describe "already provider" do
