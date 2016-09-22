@@ -40,7 +40,7 @@ module Api
       "email":"patience@schinner.io",
       "website":"http://schmelerwyman.com/ania",
       "formas_de_pago":["efectivo"],
-      "logotipo":null,
+      "logotipo_url":null,
       "facebook_handle":"enos",
       "twitter_handle":"bennett_nitzsche",
       "instagram_handle":"madisen.rowe",

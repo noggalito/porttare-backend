@@ -41,6 +41,8 @@ class ProviderProfile < ActiveRecord::Base
 
   enum banco_tipo_cuenta: BANCO_TIPOS_CUENTA
 
+  mount_uploader :logotipo, ProviderProfileLogotipoUploader
+
   begin :relationships
     belongs_to :user
     belongs_to :provider_category

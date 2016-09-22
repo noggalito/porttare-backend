@@ -12,7 +12,7 @@ json.extract!(
   :email,
   :website,
   :formas_de_pago,
-  :logotipo,
+  :logotipo_url,
   :facebook_handle,
   :twitter_handle,
   :instagram_handle,
