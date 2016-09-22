@@ -23,7 +23,6 @@ class ProviderProfilePolicy < ApplicationPolicy
       :twitter_handle,
       :instagram_handle,
       :youtube_handle,
-      :mejor_articulo,
       :nombre_establecimiento,
       formas_de_pago: [],
       offices_attributes: [

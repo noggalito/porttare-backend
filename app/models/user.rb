@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
           :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   include DeviseTokenAuth::Concerns::User # after devise
-  include Serializable
 
   has_one :provider_profile
   has_one :courier_profile

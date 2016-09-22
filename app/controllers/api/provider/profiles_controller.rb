@@ -45,7 +45,6 @@ module Api
       param :twitter_handle, String
       param :instagram_handle, String
       param :youtube_handle, String
-      param :mejor_articulo, String
       def create
         authorize ProviderProfile
         if apply_as_provider?

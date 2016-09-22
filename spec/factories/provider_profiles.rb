@@ -19,7 +19,6 @@
 #  twitter_handle         :string
 #  instagram_handle       :string
 #  youtube_handle         :string
-#  mejor_articulo         :text
 #  formas_de_pago         :text             default([]), is an Array
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -48,7 +47,6 @@ FactoryGirl.define do
     twitter_handle         { Faker::Internet.user_name }
     instagram_handle       { Faker::Internet.user_name }
     youtube_handle         { Faker::Internet.user_name }
-    mejor_articulo         { Faker::Hipster.paragraphs.join "\n" }
     formas_de_pago         { ProviderProfile::FORMAS_DE_PAGO.sample(1) }
     banco_tipo_cuenta      { ProviderProfile::BANCO_TIPOS_CUENTA.sample }
     tipo_contribuyente {

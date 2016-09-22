@@ -19,7 +19,6 @@
 #  twitter_handle         :string
 #  instagram_handle       :string
 #  youtube_handle         :string
-#  mejor_articulo         :text
 #  formas_de_pago         :text             default([]), is an Array
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null

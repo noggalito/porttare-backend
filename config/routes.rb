@@ -29,8 +29,8 @@ Rails.application.routes.draw do
           sessions: "api/auth/sessions",
           passwords: "api/auth/passwords",
           registrations: "api/auth/registrations",
+          token_validations: "api/auth/token_validations",
           omniauth_callbacks: "api/auth/omniauth_callbacks"
-          # token_validations: "api/token_validations"
         }
       )
     end

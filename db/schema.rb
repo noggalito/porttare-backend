@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922003347) do
+ActiveRecord::Schema.define(version: 20160922013351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(version: 20160922003347) do
     t.string   "twitter_handle"
     t.string   "instagram_handle"
     t.string   "youtube_handle"
-    t.text     "mejor_articulo"
     t.text     "formas_de_pago",         default: [],              array: true
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
