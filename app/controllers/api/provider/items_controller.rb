@@ -30,7 +30,7 @@ module Api
       "imagenes":[
         {
           "id":1,
-          "imagen_url":"https://robohash.org/aliquamdelenitiquisquam.png?size=50x50\u0026set=set1"
+          "imagen_url":"https://robohash.org/aliquamdelenitiquisquam.png?size=50x50&set=set1"
         }
       ]
     }
