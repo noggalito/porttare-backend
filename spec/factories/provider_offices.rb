@@ -12,12 +12,14 @@
 #  updated_at          :datetime         not null
 #
 
+require "porttare_backend/places"
+
 FactoryGirl.define do
   factory :provider_office do
     provider_profile
-    ciudad    { Faker::Address.city }
     horario   "10:00 AM - 7:00 PM"
     direccion { Faker::Address.street_address }
+    ciudad    { PorttareBackend::Places.all.sample }
 
     trait :enabled do
       enabled true
