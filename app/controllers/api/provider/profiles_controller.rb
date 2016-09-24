@@ -1,3 +1,5 @@
+require "porttare_backend/places"
+
 module Api
   module Provider
     class ProfilesController < BaseController
@@ -40,6 +42,8 @@ module Api
         param :horario,
               String,
               required: true
+        param :ciudad,
+              PorttareBackend::Places.all
       end
       param :facebook_handle, String
       param :twitter_handle, String

@@ -16,11 +16,10 @@
 #  updated_at              :datetime         not null
 #
 
+require "porttare_backend/places"
+
 class CourierProfile < ActiveRecord::Base
-  UBICACIONES = [
-    "Loja",
-    "Quito"
-  ].freeze
+  UBICACIONES = PorttareBackend::Places.all
 
   TIPOS_LICENCIA = [
     "A",

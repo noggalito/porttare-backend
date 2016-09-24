@@ -12,10 +12,14 @@
 #  updated_at          :datetime         not null
 #
 
+require "porttare_backend/places"
+
 class ProviderOffice < ActiveRecord::Base
   belongs_to :provider_profile
 
   validates :direccion,
             :horario,
             presence: true
+  validates :ciudad,
+            inclusion: { in: PorttareBackend::Places.all }
 end
