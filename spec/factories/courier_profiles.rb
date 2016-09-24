@@ -20,10 +20,10 @@ FactoryGirl.define do
   factory :courier_profile do
     user
 
-    nombres          { Faker::Name.name }
     ruc              { Faker::Code.npi }
-    telefono         { Faker::PhoneNumber.phone_number }
     email            { Faker::Internet.email }
+    nombres          { Faker::Name.name }
+    telefono         { Faker::PhoneNumber.phone_number }
     fecha_nacimiento { Faker::Date.birthday }
     ubicacion        {
       CourierProfile::UBICACIONES.sample
