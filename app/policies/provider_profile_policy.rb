@@ -28,6 +28,7 @@ class ProviderProfilePolicy < ApplicationPolicy
       offices_attributes: [
         :ciudad,
         :horario,
+        :telefono,
         :direccion
       ]
     ]

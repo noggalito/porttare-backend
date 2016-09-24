@@ -42,6 +42,10 @@ module Api
         param :horario,
               String,
               required: true
+        param :telefono,
+              String,
+              required: true,
+              desc: "un teléfono por sucursal"
         param :ciudad,
               PorttareBackend::Places.all
       end
@@ -74,6 +78,7 @@ module Api
       "direccion":"Extramuros Jorge Yáñez 2",
       "ciudad":"Ávila",
       "horario":"09:00-18:00",
+      "telefono":"948075420",
       "enabled":false
     }]
   }

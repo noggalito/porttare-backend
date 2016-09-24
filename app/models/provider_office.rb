@@ -10,6 +10,7 @@
 #  horario             :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  telefono            :string
 #
 
 require "porttare_backend/places"
@@ -19,6 +20,7 @@ class ProviderOffice < ActiveRecord::Base
 
   validates :direccion,
             :horario,
+            :telefono,
             presence: true
   validates :ciudad,
             inclusion: { in: PorttareBackend::Places.all }
