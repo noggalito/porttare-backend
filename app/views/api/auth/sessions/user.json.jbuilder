@@ -30,4 +30,13 @@ json.data do
       )
     end
   end
+
+  if @resource.courier_profile.present?
+    json.courier_profile do
+      json.partial!(
+        "api/couriers/courier_profile",
+        courier_profile: @resource.courier_profile
+      )
+    end
+  end
 end

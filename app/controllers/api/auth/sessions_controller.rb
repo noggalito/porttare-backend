@@ -14,7 +14,9 @@ module Api
         api :POST,
             "/auth/user/sign_in",
             "login"
-        description "authenticate using email and password. Response includes full provider profile and courier profile"
+        description "authenticate using email and password. Response includes full provider profile and courier profile if present"
+        see "provider-profiles#create", "Provider::Profiles#create for provider_profile serialization"
+        see "courier-profiles#create", "Courier::Profiles#create for courier_profile serialization"
         param :email, String, required: true
         param :password, String, required: true
         example %q{{
@@ -30,31 +32,10 @@ module Api
     "info":null,
     "credentials":null,
     "provider_profile":{
-      "id":1,
-      "ruc":"5563195142",
-      "razon_social":"Cadena Hermanos",
-      "nombre_establecimiento":"Gaitán y Pineda",
-      "actividad_economica":"designer",
-      "representante_legal":"Víctor Armijo Atencio",
-      "telefono":"915.647.955",
-      "email":"patience@schinner.io",
-      "website":"http://schmelerwyman.com/ania",
-      "formas_de_pago":["efectivo"],
-      "logotipo_url":null,
-      "facebook_handle":"enos",
-      "twitter_handle":"bennett_nitzsche",
-      "instagram_handle":"madisen.rowe",
-      "youtube_handle":"adam_legros",
-      "banco_nombre":"Cantabria vampires",
-      "banco_numero_cuenta":"93-9332946",
-      "banco_tipo_cuenta":"Ahorros"
-      "offices":[{
-        "id":1,
-        "direccion":"Partida Yolanda, 39",
-        "ciudad":"Rubí",
-        "horario":"10:00 AM - 7:00 PM",
-        "enabled":false
-      }]
+      #see provider_profile serialization
+    },
+    "courier_profile":{
+      #see courier_profile serialization
     }
   }
 }}

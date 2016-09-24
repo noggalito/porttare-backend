@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Api::Provider,
                type: :request do
-  describe "provider profile id is serialized as part of user" do
+  describe "user with provider profile" do
     let(:user) { create :user, :provider }
 
     let(:response_provider_profile) {
