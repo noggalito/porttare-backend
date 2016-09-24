@@ -60,12 +60,14 @@ RSpec.describe Api::Provider::ProfilesController,
   end
 
   describe "persists provider branches" do
-    let(:direccion) { Faker::Address.street_address }
+    let(:office_attributes) {
+      attributes_for :provider_office
+    }
 
     let(:attributes) {
       attributes_for(:provider_profile).merge(
         offices_attributes: [
-          { direccion: direccion, horario: "09:00-18:00" }
+          office_attributes
         ]
       )
     }
@@ -81,7 +83,9 @@ RSpec.describe Api::Provider::ProfilesController,
 
     it {
       provider_office = ProviderOffice.last
-      expect(provider_office.direccion).to eq(direccion)
+      expect(
+        provider_office.direccion
+      ).to eq(office_attributes[:direccion])
       expect(
         provider_office.provider_profile
       ).to eq(user.provider_profile)
