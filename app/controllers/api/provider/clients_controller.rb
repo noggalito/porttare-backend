@@ -22,7 +22,8 @@ module Api
       "nombres":"Urías S.A.",
       "direccion":"Subida Clemente Zapata, 9 Esc. 773",
       "telefono":"972 299 498",
-      "email":"karelle@luettgenlueilwitz.name"
+      "email":"karelle@luettgenlueilwitz.name",
+      "created_at":"2016-09-24T09:15:53.617-05:00"
     }
   ]
 }}

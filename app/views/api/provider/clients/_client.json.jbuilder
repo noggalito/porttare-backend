@@ -6,5 +6,6 @@ json.extract!(
   :nombres,
   :direccion,
   :telefono,
-  :email
+  :email,
+  :created_at
 )
