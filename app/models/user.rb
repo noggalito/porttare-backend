@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   has_one :provider_profile
   has_one :courier_profile
   has_one :customer_profile
+  has_one :provider_dispatcher
   has_many :locations,
            -> { order(id: :desc) },
            class_name: "UserLocation"
