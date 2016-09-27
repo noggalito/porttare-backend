@@ -21,6 +21,8 @@ Rails.application.routes.draw do
                 only: [:index, :create, :update, :destroy]
       resources :items,
                 only: [:index, :create, :update, :destroy]
+      resources :dispatchers,
+                only: [:index, :create, :update, :destroy]
     end
 
     namespace :courier do
