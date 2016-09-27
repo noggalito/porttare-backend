@@ -1,4 +1,4 @@
-class ProviderClientPolicy < ApplicationPolicy
+class ProviderDispatcherPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.where(
