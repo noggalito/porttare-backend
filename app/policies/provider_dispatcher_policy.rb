@@ -2,7 +2,7 @@ class ProviderDispatcherPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.where(
-        provider_profile_id: user.provider_profile.id
+        provider_office_id: user.provider_profile.offices.pluck(:id)
       )
     end
   end

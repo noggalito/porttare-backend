@@ -70,7 +70,6 @@ module Api
       param_group :provider_dispatcher
       def update
         authorize @provider_dispatcher
-        # TODO do we need to update the user_id and provider_office?
         if @provider_dispatcher.update_attributes(provider_client_params)
           render :client, status: :accepted
         else

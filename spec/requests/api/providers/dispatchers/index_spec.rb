@@ -35,16 +35,15 @@ RSpec.describe Api::Provider::DispatchersController,
       }
 
       it "response includes my item" do
-        binding.pry
-        my_dispatcher = json["provider_dispatchers"].detect do |item|
-          item["id"] == provider_dispatcher.id
+        my_dispatcher = json["provider_dispatchers"].detect do |dispatcher|
+          dispatcher["id"] == provider_dispatcher.id
         end
         expect(my_dispatcher).to be_present
       end
 
       it "response doesn't include other's item" do
-        another_dispatcher = json["provider_dispatchers"].detect do |item|
-          item["id"] == another_dispatcher.id
+        another_dispatcher = json["provider_dispatchers"].detect do |dispatcher|
+          dispatcher["id"] == other_provider_dispatcher.id
         end
         expect(another_dispatcher).to_not be_present
       end
