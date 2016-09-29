@@ -26,7 +26,6 @@ class ProviderDispatcherPolicy < ApplicationPolicy
   def permitted_attributes
     [
       :email,
-      :ruc,
       :provider_office_id
     ]
   end

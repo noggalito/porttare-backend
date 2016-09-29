@@ -18,13 +18,7 @@ module Api
           {
             "id":1,
             "email":"karelle@luettgenlueilwitz.name",
-            "ruc":"961770900-7",
-            "nombres":"Perico de los Palotes",
-            "email":"karelle@luettgenlueilwitz.name",
-            "local": {
-              nombre: "sucursal 666",
-              id: 1
-            }
+            "provider_office_id": 1
           }
         ]
       }}
@@ -35,7 +29,6 @@ module Api
 
       def_param_group :provider_dispatcher do
         param :email, String, required: true
-        param :ruc, String, required: true
         param :provider_office_id, Integer, required: true
       end
 
@@ -45,12 +38,7 @@ module Api
       param_group :provider_dispatcher
       def create
         authorize ProviderDispatcher
-        user = User.find_by_email provider_client_params.email
-        @provider_dispatcher =
-          current_api_auth_user
-            .provider_profile
-            .provider_dispatchers.new(provider_dispatcher_params)
-        @provider_dispatcher.user = user if user
+        @provider_dispatcher = ProviderDispatcher.new(provider_dispatcher_params)
         if @provider_dispatcher.save
           render :dispatcher, status: :created
         else
@@ -70,10 +58,10 @@ module Api
       param_group :provider_dispatcher
       def update
         authorize @provider_dispatcher
-        if @provider_dispatcher.update_attributes(provider_client_params)
-          render :client, status: :accepted
+        if @provider_dispatcher.update_attributes(provider_dispatcher_params)
+          render :dispatcher, status: :accepted
         else
-          @errors = @provider_client.errors
+          @errors = @provider_dispatcher.errors
           render "api/shared/resource_error",
                  status: :unprocessable_entity
         end
@@ -95,7 +83,7 @@ module Api
 
       private
 
-      def provider_client_params
+      def provider_dispatcher_params
         params.permit(
           *policy(ProviderDispatcher).permitted_attributes
         )

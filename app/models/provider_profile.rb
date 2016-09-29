@@ -48,7 +48,6 @@ class ProviderProfile < ActiveRecord::Base
     belongs_to :provider_category
     has_many :provider_items
     has_many :provider_clients
-    has_many :provider_dispatchers
     has_many :offices,
              class_name: 'ProviderOffice'
 
