@@ -17,7 +17,8 @@ require "porttare_backend/places"
 
 class ProviderOffice < ActiveRecord::Base
   belongs_to :provider_profile
-  has_many :provider_dispatchers
+  has_many :provider_dispatchers,
+           dependent: :destroy
 
   validates :direccion,
             :horario,
