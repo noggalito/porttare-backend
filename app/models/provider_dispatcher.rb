@@ -12,7 +12,7 @@
 
 class ProviderDispatcher < ActiveRecord::Base
   begin :relationships
-    belongs_to :user
+    belongs_to :provider_profile
     belongs_to :provider_office
   end
 end
