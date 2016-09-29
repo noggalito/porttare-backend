@@ -18,15 +18,17 @@ RSpec.describe Api::Provider::DispatchersController,
     before { login_as provider }
 
     describe "lists my dispatchers" do
-      let!(:provider_dispatcher) {
+      let(:provider_dispatcher) {
         create :provider_dispatcher,
-               user: provider
+               provider_profile: provider.provider_profile
       }
-      let!(:other_provider_dispatcher) {
+      let(:other_provider_dispatcher) {
         create :provider_dispatcher
       }
 
       before {
+        provider_dispatcher
+        other_provider_dispatcher
         get_with_headers "/api/provider/dispatchers"
       }
 
