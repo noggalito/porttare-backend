@@ -12,8 +12,9 @@
 
 FactoryGirl.define do
   factory :provider_dispatcher do
-    user
+    provider_profile
     provider_office
+    
     email { Faker::Internet.email }
   end
 end
