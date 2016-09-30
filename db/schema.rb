@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926235832) do
+ActiveRecord::Schema.define(version: 20160930212119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,13 +93,17 @@ ActiveRecord::Schema.define(version: 20160926235832) do
   add_index "provider_clients", ["provider_profile_id"], name: "index_provider_clients_on_provider_profile_id", using: :btree
 
   create_table "provider_dispatchers", force: :cascade do |t|
-    t.integer  "provider_office_id", null: false
-    t.string   "email",              null: false
+    t.integer  "user_id"
+    t.integer  "provider_office_id"
+    t.string   "email"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "provider_dispatchers", ["deleted_at"], name: "index_provider_dispatchers_on_deleted_at", using: :btree
   add_index "provider_dispatchers", ["provider_office_id"], name: "index_provider_dispatchers_on_provider_office_id", using: :btree
+  add_index "provider_dispatchers", ["user_id"], name: "index_provider_dispatchers_on_user_id", using: :btree
 
   create_table "provider_item_images", force: :cascade do |t|
     t.integer  "provider_item_id", null: false
@@ -216,6 +220,7 @@ ActiveRecord::Schema.define(version: 20160926235832) do
   add_foreign_key "customer_profiles", "users"
   add_foreign_key "provider_clients", "provider_profiles"
   add_foreign_key "provider_dispatchers", "provider_offices"
+  add_foreign_key "provider_dispatchers", "users"
   add_foreign_key "provider_item_images", "provider_items"
   add_foreign_key "provider_items", "provider_profiles"
   add_foreign_key "provider_offices", "provider_profiles"

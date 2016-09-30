@@ -10,6 +10,8 @@
 #
 
 class ProviderDispatcher < ActiveRecord::Base
+  include SoftDestroyable
+  
   validates :email, presence: true
 
   begin :relationships
