@@ -62,14 +62,14 @@ RSpec.describe Api::Provider::DispatchersController,
       end
 
       it {
-        response = JSON.parse(response.body)["provider_dispatcher"]
+        json_response = JSON.parse(response.body)["provider_dispatcher"]
 
         expect(
-          response["email"]
+          json_response["email"]
         ).to eq(attributes[:email])
 
         expect(
-          response["provider_office_id"]
+          json_response["provider_office_id"]
         ).to eq(provider_office.id)
       }
     end
