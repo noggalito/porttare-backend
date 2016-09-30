@@ -17,13 +17,26 @@ RSpec.describe Api::Provider::DispatchersController,
   end
 
   describe "as provider" do
-    let(:provider) { create :user, :provider }
-    before { login_as provider }
-    let(:attributes) { attributes_for :provider_dispatcher }
+    let(:provider) {
+      create :user, :provider
+    }
+    let(:provider_office) {
+      create :provider_office,
+             provider_profile: provider.provider_profile
+    }
+    let(:attributes) {
+      attributes_for(:provider_dispatcher).merge(
+        provider_office_id: provider_office.id
+      )
+    }
+    before {
+      provider_office
+      login_as provider
+    }
 
     describe "with invalid attributes" do
       let(:invalid_attributes) {
-        attributes_for(:provider_dispatcher).except(:email)
+        attributes.except(:email)
       }
       before {
         post_with_headers(
@@ -49,10 +62,15 @@ RSpec.describe Api::Provider::DispatchersController,
       end
 
       it {
-        provider_dispatcher = ProviderDispatcher.last
+        response = JSON.parse(response.body)["provider_dispatcher"]
+
         expect(
-          provider_dispatcher.email
+          response["email"]
         ).to eq(attributes[:email])
+
+        expect(
+          response["provider_office_id"]
+        ).to eq(provider_office.id)
       }
     end
   end
