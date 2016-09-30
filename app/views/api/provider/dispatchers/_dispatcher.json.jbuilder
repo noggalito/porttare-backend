@@ -4,5 +4,11 @@ json.extract!(
   :email,
   :provider_office_id
 )
-
-# TODO render user?
+json.user do
+  if provider_dispatcher.user
+    json.partial!(
+      "user",
+      user: provider_dispatcher.user
+    )
+  end
+end

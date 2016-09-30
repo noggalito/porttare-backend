@@ -11,10 +11,14 @@
 
 class ProviderDispatcher < ActiveRecord::Base
   include SoftDestroyable
-  
+
   validates :email, presence: true
 
   begin :relationships
     belongs_to :provider_office
+  end
+
+  def user
+    User.find_by email: email
   end
 end
