@@ -19,6 +19,6 @@ class ProviderDispatcher < ActiveRecord::Base
   end
 
   def user
-    User.find_by email: email
+    @user ||= User.find_by(email: email)
   end
 end
