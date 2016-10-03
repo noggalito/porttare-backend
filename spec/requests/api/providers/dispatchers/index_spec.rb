@@ -53,6 +53,25 @@ RSpec.describe Api::Provider::DispatchersController,
         end
         expect(another_dispatcher).to_not be_present
       end
+
+      describe "response includes user" do
+        let(:dispatcher_user) { create :user }
+        let(:provider_dispatcher) {
+          create :provider_dispatcher,
+                 provider_office: provider_office,
+                 email: dispatcher_user.email
+        }
+
+        it {
+          dispatcher = json["provider_dispatchers"].detect do |dispatcher|
+            dispatcher["id"] == provider_dispatcher.id
+          end
+          user = dispatcher["user"]
+          expect(
+            user["id"]
+          ).to eq(dispatcher_user.id)
+        }
+      end
     end
   end
 end

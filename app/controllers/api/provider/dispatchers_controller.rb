@@ -14,13 +14,16 @@ module Api
           "/provider/dispatchers",
           "Lists provider's dispatchers"
       example %q{{
-        "provider_dispatchers":[
-          {
-            "id":1,
-            "email":"karelle@luettgenlueilwitz.name",
-            "provider_office_id": 1
+        "provider_dispatchers":[{
+          "id":5,
+          "email":"daron.gulgowski@ebertraynor.org",
+          "provider_office_id":5,
+          "user":{
+            "id":7,
+            "name":"Beatriz Soto Valles",
+            "image":"https://robohash.org/architectoanimiquos.png?size=300x300&set=set1"
           }
-        ]
+        }]
       }}
       def index
         authorize ProviderDispatcher
