@@ -20,7 +20,7 @@ FactoryGirl.define do
   factory :provider_office do
     provider_profile
     hora_de_apertura   "10:00 AM"
-    hora_de_cierre     "7:00 PM"
+    hora_de_cierre     "19:00 PM"
     direccion { Faker::Address.street_address }
     ciudad    { PorttareBackend::Places.all.sample }
     telefono  { Faker::PhoneNumber.phone_number }

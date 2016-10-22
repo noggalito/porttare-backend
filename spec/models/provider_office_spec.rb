@@ -24,7 +24,15 @@ RSpec.describe ProviderOffice,
   end
 
   describe "allows saving a time with format HH:MM" do
-    let(:provider_office) { create :provider_office }
+    let(:provider_office) {
+      create :provider_office,
+              hora_de_cierre: '19:00 PM'
+    }
+    it {
+      expect(
+        provider_office.hora_de_cierre
+      ).to be_a(Time)
+    }
     it {
       expect(
         provider_office.hora_de_cierre.strftime("%H:%M %p")
