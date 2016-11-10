@@ -21,10 +21,10 @@ class ProviderOffice < ActiveRecord::Base
   has_many :provider_dispatchers,
            dependent: :destroy
 
-  validates :direccion,
-            :hora_de_apertura,
+  validates :telefono,
+            :direccion,
             :hora_de_cierre,
-            :telefono,
+            :hora_de_apertura,
             presence: true
   validates :ciudad,
             inclusion: { in: PorttareBackend::Places.all }

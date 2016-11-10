@@ -23,11 +23,13 @@ Rails.application.routes.draw do
 
     namespace :provider do
       resource :profile, only: :create
-      resources :clients,
-                only: [:index, :create, :update, :destroy]
       resources :items,
                 only: [:index, :create, :update, :destroy]
+      resources :clients,
+                only: [:index, :create, :update, :destroy]
       resources :dispatchers,
+                only: [:index, :create, :update, :destroy]
+      resources :offices,
                 only: [:index, :create, :update, :destroy]
     end
 
