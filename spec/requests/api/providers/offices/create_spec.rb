@@ -23,6 +23,7 @@ RSpec.describe Api::Provider::OfficesController,
       let(:attributes) {
         # only required ones
         attributes_for(:provider_office).slice(
+          :ciudad,
           :telefono,
           :direccion,
           :hora_de_cierre,

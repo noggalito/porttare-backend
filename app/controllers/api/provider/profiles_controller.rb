@@ -13,6 +13,7 @@ module Api
       api :POST,
           "/provider/profile",
           "Submit a provider profile application. Response includes the errors if any."
+      see "provider-offices#create", "Provider::Offices#create for attributes for offices"
       param :ruc, String, required: true
       param :razon_social, String, required: true
       param :nombre_establecimiento,
@@ -34,24 +35,7 @@ module Api
       param :banco_tipo_cuenta, ProviderProfile::BANCO_TIPOS_CUENTA
       param :offices_attributes,
             Hash,
-            desc: "provider's offices (branches)" do
-        param :direccion,
-              String,
-              required: true,
-              desc: "Branches without `direccion` will be ignored"
-        param :hora_de_apertura,
-              Time,
-              required: true
-        param :hora_de_cierre,
-              Time,
-              required: true
-        param :telefono,
-              String,
-              required: true,
-              desc: "un teléfono por sucursal"
-        param :ciudad,
-              PorttareBackend::Places.all
-      end
+            desc: "provider's offices (branches). See provider::offices endpoint for attributes"
       param :facebook_handle, String
       param :twitter_handle, String
       param :instagram_handle, String

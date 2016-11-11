@@ -33,13 +33,13 @@ class ProviderProfilePolicy < ApplicationPolicy
       :youtube_handle,
       :nombre_establecimiento,
       formas_de_pago: [],
-      offices_attributes: [
-        :ciudad,
-        :hora_de_apertura,
-        :hora_de_cierre,
-        :telefono,
-        :direccion
-      ]
+      offices_attributes: offices_attributes
     ]
+  end
+
+  private
+
+  def offices_attributes
+    ProviderOfficePolicy.new(user,record).permitted_attributes
   end
 end
