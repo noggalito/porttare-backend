@@ -23,20 +23,19 @@ RSpec.describe ProviderOffice,
     it { is_expected.to be_valid }
   end
 
-  describe "allows saving a time with format HH:MM" do
+  describe "allows setting schedule with timezone" do
     let(:provider_office) {
       create :provider_office,
-              hora_de_cierre: '19:00 PM'
+              hora_de_cierre: '23:00 -0500'
     }
     it {
       expect(
         provider_office.hora_de_cierre
-      ).to be_a(Time)
-    }
-    it {
+      ).to be_a(DateTime)
+
       expect(
-        provider_office.hora_de_cierre.strftime("%H:%M %p")
-      ).to eq("19:00 PM")
+        provider_office.hora_de_cierre.strftime("%H:%M %z")
+      ).to eq("23:00 -0500")
     }
   end
 end

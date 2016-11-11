@@ -48,16 +48,22 @@ RSpec.describe Api::Provider::OfficesController,
       end
 
       it "response" do
-        binding.pry
-        json = JSON.parse(response.body)
+        response_provider_office = JSON.parse(response.body).fetch("provider_office")
 
         expect(
-          json["direccion"]
+          response_provider_office["direccion"]
         ).to eq(attributes[:direccion])
 
         expect(
-          json["hora_de_apertura"]
-        ).to eq(attributes[:hora_de_apertura])
+          response_provider_office["hora_de_apertura"]
+        ).to eq(
+          I18n.l(
+            attributes[:hora_de_apertura].in_time_zone(
+              Rails.application.config.time_zone
+            ),
+            format: :office_schedule
+          )
+        )
       end
     end
   end

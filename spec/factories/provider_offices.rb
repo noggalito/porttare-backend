@@ -19,8 +19,11 @@ require "porttare_backend/places"
 FactoryGirl.define do
   factory :provider_office do
     provider_profile
-    hora_de_apertura   "10:00 AM"
-    hora_de_cierre     "19:00 PM"
+
+    # GMT-5 is ecuadorian time
+    hora_de_cierre   "19:00 -0500"
+    hora_de_apertura "10:00 -0500"
+
     direccion { Faker::Address.street_address }
     ciudad    { PorttareBackend::Places.all.sample }
     telefono  { Faker::PhoneNumber.phone_number }

@@ -247,4 +247,4 @@ es:
       long: "%d de %B de %Y %H:%M"
       short: "%d de %b %H:%M"
       api: "%Y-%m-%d %H:%M %z"
-      office_schedule: "%H:%M %p"
+      office_schedule: "%H:%M %z"

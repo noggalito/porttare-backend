@@ -17,10 +17,12 @@ module Api
               desc: "Branches without `direccion` will be ignored"
         param :hora_de_apertura,
               Time,
-              required: true
+              required: true,
+              desc: "format: `%H:%M %z`. Example: `13:00 -0500`"
         param :hora_de_cierre,
               Time,
-              required: true
+              required: true,
+              desc: "format: `%H:%M %z`. Example: `13:00 -0500`"
         param :telefono,
               String,
               required: true,
@@ -36,7 +38,6 @@ module Api
       param_group :provider_office
       def create
         @provider_office = provider_scope.new(provider_office_params)
-        binding.pry
         if @provider_office.save
           render :provider_office, status: :created
         else
