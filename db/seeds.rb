@@ -1,4 +1,4 @@
-if User.where(admin: true).count == 0
+if User.where("'admin' = ANY (privileges)").count == 0
   puts "creating default admin:"
   attributes = {
     email: "moviggoAdm@moviggo.com",
@@ -6,7 +6,7 @@ if User.where(admin: true).count == 0
     password_confirmation: "mov12345",
     nickname: "moviggo",
     name: "moviggo",
-    admin: true
+    privileges: ["admin"]
   }
   puts attributes
   User.create!(attributes)
