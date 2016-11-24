@@ -1,4 +1,4 @@
-if User.where("'admin' = ANY (privileges)").count == 0
+if User.where.overlap(privileges: [:admin]).count == 0
   puts "creating default admin:"
   attributes = {
     email: "moviggoAdm@moviggo.com",
