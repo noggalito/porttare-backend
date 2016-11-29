@@ -15,6 +15,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  deleted_at          :datetime
+#  cantidad            :integer          default(0)
 #
 
 FactoryGirl.define do
@@ -27,6 +28,7 @@ FactoryGirl.define do
     precio        { Faker::Commerce.price }
     volumen       { Faker::Number.number(3) }
     peso          { "#{Faker::Number.number(3)} kg" }
+    cantidad      { Faker::Number.number(3) }
     observaciones { Faker::Hipster.paragraphs.join "\n" }
 
     trait :with_imagen do
