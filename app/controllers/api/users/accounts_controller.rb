@@ -33,10 +33,9 @@ module Api
       param :fecha_nacimiento, Date
       param :password, String, "if you want to update your account's password"
       def update
-        if @user.update(user_params)
+        if @api_resource.update(user_params)
           render :show, status: :accepted
         else
-          @errors = @user.errors
           render "api/shared/resource_error",
                  status: :unprocessable_entity
         end
@@ -55,7 +54,7 @@ module Api
 
       def authorize_user!
         authorize User
-        @user = policy_scope(User)
+        @api_resource = policy_scope(User)
       end
     end
   end

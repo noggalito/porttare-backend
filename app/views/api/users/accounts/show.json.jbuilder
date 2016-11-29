@@ -1,6 +1,6 @@
 json.user do
   json.extract!(
-    @user,
+    @api_resource,
     :id,
     :name,
     :email,
@@ -8,6 +8,6 @@ json.user do
     :fecha_nacimiento
   )
   json.fecha_nacimiento(
-    l(@user.fecha_nacimiento, format: :api)
-  ) if @user.fecha_nacimiento.present?
+    l(@api_resource.fecha_nacimiento, format: :api)
+  ) if @api_resource.fecha_nacimiento.present?
 end
