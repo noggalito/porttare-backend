@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
             in: PRIVILEGES,
             multiple: true
 
-  mount_uploader :custom_image, UserProfileUploader
+  mount_uploader :custom_image, UserCustomImageUploader
 
   ##
   # define a scope for each privilege
