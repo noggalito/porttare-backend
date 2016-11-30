@@ -5,7 +5,8 @@ json.user do
     :name,
     :email,
     :ciudad,
-    :fecha_nacimiento
+    :fecha_nacimiento,
+    :custom_image_url
   )
   json.fecha_nacimiento(
     l(@api_resource.fecha_nacimiento, format: :api)

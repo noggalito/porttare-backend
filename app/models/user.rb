@@ -26,6 +26,7 @@
 #  fecha_nacimiento       :date
 #  ciudad                 :string
 #  privileges             :text             default([]), is an Array
+#  custom_image           :string
 #
 
 class User < ActiveRecord::Base
@@ -44,6 +45,8 @@ class User < ActiveRecord::Base
   enumerize :privileges,
             in: PRIVILEGES,
             multiple: true
+
+  mount_uploader :custom_image, UserProfileUploader
 
   ##
   # define a scope for each privilege

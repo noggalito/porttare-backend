@@ -26,6 +26,7 @@
 #  fecha_nacimiento       :date
 #  ciudad                 :string
 #  privileges             :text             default([]), is an Array
+#  custom_image           :string
 #
 
 FactoryGirl.define do

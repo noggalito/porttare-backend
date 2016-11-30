@@ -18,7 +18,8 @@ module Api
     "name":"Ana María Cornejo Vásquez",
     "email":"darlene@collierfranecki.biz",
     "ciudad":"Móstoles",
-    "fecha_nacimiento":"1973-08-06"
+    "fecha_nacimiento":"1973-08-06",
+    "custom_image_url": null
   }
 }}
       def show
@@ -30,6 +31,7 @@ module Api
       param :name, String
       param :email, String
       param :ciudad, String
+      param :custom_image, String
       param :fecha_nacimiento, Date
       param :password, String, "if you want to update your account's password"
       def update

@@ -20,7 +20,8 @@ class UserPolicy < ApplicationPolicy
       :image,
       :email,
       :ciudad,
-      :fecha_nacimiento
+      :fecha_nacimiento,
+      :custom_image
     ]
   end
 

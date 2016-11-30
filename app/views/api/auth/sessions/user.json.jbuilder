@@ -13,6 +13,7 @@ json.data do
     :name,
     :nickname,
     :image,
+    :custom_image_url,
     :email,
     :info,
     :credentials
