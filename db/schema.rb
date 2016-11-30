@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127112908) do
+ActiveRecord::Schema.define(version: 20161129153756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(version: 20161127112908) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.datetime "deleted_at"
+    t.integer  "cantidad",            default: 0
   end
 
   add_index "provider_items", ["deleted_at"], name: "index_provider_items_on_deleted_at", using: :btree

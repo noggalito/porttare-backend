@@ -15,6 +15,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  deleted_at          :datetime
+#  cantidad            :integer          default(0)
 #
 
 require 'rails_helper'
