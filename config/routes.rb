@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       resources :items,
                 only: [:index, :create, :update, :destroy]
       resources :offices,
-                only: [:index, :create, :update]#, :destroy]
+                only: [:index, :create, :update, :show]#, :destroy]
       resources :clients,
                 only: [:index, :create, :update, :destroy]
       resources :dispatchers,
