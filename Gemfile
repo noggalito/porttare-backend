@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin]
+
 gem 'rails', '4.2.7.1'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'

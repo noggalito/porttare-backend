@@ -17,13 +17,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  password: admin
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   host: localhost
-  database: porttare-backend_development
+
 development:
   <<: *default
   database: porttare-backend_development
@@ -84,11 +82,5 @@ test:
 production:
   <<: *default
   database: porttare-backend_production
-  username: postgres
-  password: <%= ENV['PORTTARE-BACKEND_DATABASE_PASSWORD'] %>
-
-demo:
-  <<: *default
-  database: porttare-backend_demo
   username: porttare-backend
-  password: <%= ENV['BACKEND_DATABASE_PASSWORD'] %>
+  password: <%= ENV['PORTTARE-BACKEND_DATABASE_PASSWORD'] %>
