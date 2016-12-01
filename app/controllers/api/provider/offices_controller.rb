@@ -12,6 +12,8 @@ module Api
       self.resource_klass = ProviderOffice
 
       before_action :authenticate_api_auth_user!
+      before_action :pundit_authorize, only: :show
+      before_action :find_api_resource, only: :show
 
       api :GET,
           "/provider/offices",
