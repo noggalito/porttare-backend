@@ -6,6 +6,10 @@ class ProviderOfficePolicy < ApplicationPolicy
       )
     end
   end
+  
+  def show?
+    is_provider?
+  end
 
   def index?
     is_provider?
