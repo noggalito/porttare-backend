@@ -52,7 +52,7 @@ module Api
         param :volumen, String
         param :peso, String
         param :cantidad, Integer, required: true
-        param :en_stock, Boolean
+        param :en_stock, [true, false]
         param :imagenes_attributes,
               Hash,
               desc: "item images" do
