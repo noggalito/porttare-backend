@@ -102,6 +102,7 @@ module Api
       }
       param :id, Integer, required: true, desc: "provider office id"
       def show
+        render :provider_office
       end
 
       private
