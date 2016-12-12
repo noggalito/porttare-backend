@@ -13,6 +13,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def agree_tos?
+    true
+  end
+
   def permitted_attributes
     [
       :name,

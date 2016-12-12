@@ -31,6 +31,7 @@ module Api
     "email":"user-1@noggalito.com",
     "info":null,
     "credentials":null,
+    "agreed_tos":true,
     "provider_profile":{
       #see provider_profile serialization
     },

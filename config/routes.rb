@@ -46,6 +46,8 @@ Rails.application.routes.draw do
     end
 
     namespace :users do
+      resource :tos,
+               only: :create
       resource :account,
                only: [:show, :update]
     end
