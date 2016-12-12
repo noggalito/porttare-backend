@@ -8,6 +8,6 @@ RSpec.describe Api::Users::AccountsController,
   it "agree TOS" do
     post_with_headers "/api/users/tos"
     expect(response.status).to eq(202)
-    expect(user.reload).to agreed_tos
+    expect(user.reload).to be_agreed_tos
   end
 end
