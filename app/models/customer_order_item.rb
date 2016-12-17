@@ -71,7 +71,7 @@ class CustomerOrderItem < ActiveRecord::Base
     def readd_from_attributes(parameters)
       self.cantidad += parameters[:cantidad].to_i
       if parameters[:observaciones].present?
-        self.observaciones.to_s += "\n" + parameters[:observaciones]
+        String(self.observaciones) += "\n" + parameters[:observaciones]
       end
     end
 
